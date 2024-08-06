@@ -130,3 +130,26 @@ class SoldState implements State {
     this.vendingMachine.setState(this.vendingMachine.getNoCoinState());
   }
 }
+
+function moPhongMayBanHang() {
+  const mayBanHang = new VendingMachine();
+
+  console.log("----- Trạng thái ban đầu: Không có xu -----");
+  mayBanHang.insertCoin(); // Xu đã được đưa vào
+  mayBanHang.selectProduct(); // Sản phẩm đã được chọn, sản phẩm được phát ra
+
+  console.log("\n----- Trạng thái: Không có xu -----");
+  mayBanHang.ejectCoin(); // Không có xu để trả lại
+
+  console.log("\n----- Trạng thái: Có xu -----");
+  mayBanHang.insertCoin(); // Xu đã được đưa vào
+  mayBanHang.selectProduct(); // Sản phẩm đã được chọn, sản phẩm được phát ra
+
+  console.log("\n----- Trạng thái: Đã bán -----");
+  mayBanHang.insertCoin(); // Vui lòng chờ, đang phát sản phẩm
+  mayBanHang.ejectCoin(); // Không thể trả lại, sản phẩm đã được bán
+  mayBanHang.selectProduct(); // Sản phẩm đã được chọn
+}
+
+// Chạy mô phỏng
+moPhongMayBanHang();
